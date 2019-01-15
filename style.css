@@ -1,0 +1,36 @@
+.ledRing path {
+  stroke: green;
+  stroke-width: 0;
+  fill: black;
+  fill-rule: evenodd;
+}
+
+.led rect {
+  stroke-width: 0;
+  stroke: black;
+  fill: white;
+}
+
+.led circle {
+  stroke: grey;
+  stroke-width: 1;
+}
+
+.colorPicker path {
+  stroke: green;
+  stroke-width: 0;
+  fill: grey;
+  fill-rule: evenodd;
+}
+
+.led.night rect {
+	fill:black;
+}
+
+.led.night circle {
+	stroke-width: 0;
+}
+
+#drawing.night {
+	background: black;
+}
