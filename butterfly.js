@@ -1,30 +1,50 @@
 function animateFunction(fcn, leds) {
     var z = [];
-	var pos = 0;
 	$.each( leds, function( key, value ) {
 			z.push(fcn(value.cx(),value.cy()));
 		});
 	z=scale(z,0,360);
-	var id = setInterval(frame, 5);
+    var id = setInterval(frame, 50);
+    var pos = 0.5;
+    var dir = 1;
+    var inc = 0.05;
 	function frame() {
 		for(var i=0; i < z.length; i++) {
-			leds[i].fill(new SVG.Color(hsvToRgb((z[i]+pos)%360,100,100)).toHex());
-			
-		}
-		pos++
+			//leds[i].fill(new SVG.Color(hsvToRgb((z[i]*pos)%360,100,100)).toHex());
+			leds[i].fill('hsl('+(z[i]*pos)%360+', 100%, 50%)');
+        }
+        if(dir == 1) {
+            pos += inc;
+        } else {
+            pos -= inc;
+        }
+        if(pos > 1) {
+            pos = 1;
+            dir = -1;
+        } else if(pos < 0.5) {
+            pos = 0.5;
+            dir = 1;
+        }
 	}
 }
 
 function butterfly(x,y) {
-	return (x*x-y*y)*Math.sin((x+y)/50)/(x*x+y*y);
+    var a = -Math.PI/4+Math.PI/6;
+    var c = Math.cos(a);
+    var s= Math.sin(a);
+    var X = x*c+y*s;
+    var Y = -x*s+y*c;
+	return Math.abs((X*X-Y*Y)*Math.sin((X+Y)/50)/(X*X+Y*Y));
 }
+
+
 
 function scale(arr, a, b) {
 	var newArr = [];
 	var m = Math.min(...arr);
 	var M = Math.max(...arr);
 	for(var i=0; i < arr.length; i++) {
-		newArr.push((((arr[i] - m) * (b - a)) / (M - m)) + a);
+		newArr.push(Math.floor((((arr[i] - m) * (b - a)) / (M - m)) + a));
 	}
 	return newArr;
 }

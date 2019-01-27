@@ -31,7 +31,7 @@ function drawLedRing(parent, x, y) {
       rotation: 30 * i//,
       //cx: x,
       //cy: y
-    }).fill('black');
+    }).fill('rgb(0,0,0)');
   }
   return leds;
 }
