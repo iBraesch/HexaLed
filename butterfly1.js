@@ -1,10 +1,13 @@
 function Butterfly (name) {
-    Effect.call(this, name);
+    Effect.call(this,name);
     this.param.a = 50;
-    this.param.rotAngle = -Math.PI/4;
-    this.param.tau = 1000;
+    this.param.rotAngle = 0;
+    this.param.tau = 3000;
     this.z = [];
-	this.updateParameters();
+    this.updateParameters();
+    $(".effectParameters.Butterfly input[name='paramA']").on('change',(e) => {this.param.a = parseInt(e.target.value)});
+    $(".effectParameters.Butterfly input[name='paramRotAngle']").on('change',(e) => {this.param.rotAngle = parseFloat(e.target.value)});
+    $(".effectParameters.Butterfly input[name='paramTau']").on('change',(e) => {this.param.tau = parseInt(e.target.value)});
 };
 
 Butterfly.prototype.start = function() {
@@ -13,7 +16,6 @@ Butterfly.prototype.start = function() {
             targets: 'circle',
             fill: (el,i) => {return ['hsl('+this.z[i]+', 100%, 50%)', 'hsl('+Math.floor(0.5*this.z[i])+', 100%, 50%)']},
             duration: this.param.tau,
-            duration: 1000,
             easing: 'easeInOutQuad',
             direction: 'alternate',
             loop: true,
@@ -50,7 +52,6 @@ Butterfly.prototype.updateParameters = function() {
             targets: 'circle',
             fill: (el,i) => {return ['hsl('+this.z[i]+', 100%, 50%)', 'hsl('+Math.floor(0.5*this.z[i])+', 100%, 50%)']},
             duration: this.param.tau,
-            duration: 1000,
             easing: 'easeInOutQuad',
             direction: 'alternate',
             loop: true,

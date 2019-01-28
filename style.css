@@ -50,6 +50,11 @@
   flex-direction: column;
 }
 
-#paramRandomBurst {
-  flex-grow: 1;
+#effectControls {
+  display: flex;
+}
+
+.effectParameters {
+  display: flex;
+  flex-direction: column;
 }

@@ -5,7 +5,7 @@
 		<title>Insert title here</title>
 	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
-	    <script type="text/javascript" src="anime.js"></script>
+	    <script type="text/javascript" src="anime.min.js"></script>
 	    <script type="text/javascript" src="script.js"></script>
 	    <script type="text/javascript" src="effect.js"></script>
 	    <script type="text/javascript" src="randomBurst.js"></script>
@@ -22,14 +22,19 @@
             <div id="commands">
 				<div id="effectSelect">
 					<button onclick="night()">Night Mode</button>
-					<button onclick="animateFunction(butterfly,leds)">Butterfly</button>
+					<button onclick="createAnimation('butterfly')">Butterfly</button>
 					<button onclick="randomBurst()">RandomBurst</button>
-					<button onclick="stop()">Stop</button>
 				</div>
-				<div id="paramRandomBurst">
-					<form>
-						<input type="color">
-					</form>	
+				<div id="effectControls">
+					<button onclick="currentAnimation.start()">Play</button>
+					<button onclick="currentAnimation.pause()">Pause</button>
+					<button onclick="currentAnimation.stop()">Stop</button>
+				</div>
+				<div class="effectParameters Butterfly">
+					<input type="number" name="paramA" placeholder="Length" min="0" value="50">
+					<input type="number" name="paramRotAngle" placeholder="Angle" value="0">
+					<input type="number" name="paramTau"  placeholder="Duration" min="100" value="3000">
+					<input type="submit" onclick="currentAnimation.updateParameters()"> 
 				</div>
 			</div>
         </div>

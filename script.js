@@ -1,4 +1,5 @@
 var leds = [];
+var currentAnimation;
 function start() {
   //SVG Drawing
   var draw = SVG('drawing').viewbox(-150, -150, 300, 300);
@@ -58,4 +59,15 @@ function night() {
 	$('.led').each(function() {
 		  this.instance.toggleClass("night");
 		})
+}
+
+function createAnimation(name) {
+  switch(name) {
+    case 'butterfly':
+      currentAnimation = new Butterfly('b1');
+      break;
+    case 'randomBurst':
+      break;
+    default:
+  }
 }
