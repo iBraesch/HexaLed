@@ -66,3 +66,13 @@ Butterfly.prototype.butterflyFcn = function(x,y) {
     var Y = -x*s+y*c;
     return Math.abs((X*X-Y*Y)*Math.sin((X+Y)/this.param.a)/(X*X+Y*Y));
 }
+
+function scale(arr, a, b) {
+	var newArr = [];
+	var m = Math.min(...arr);
+	var M = Math.max(...arr);
+	for(var i=0; i < arr.length; i++) {
+		newArr.push(Math.floor((((arr[i] - m) * (b - a)) / (M - m)) + a));
+	}
+	return newArr;
+}
