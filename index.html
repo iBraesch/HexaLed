@@ -5,14 +5,15 @@
 		<title>Insert title here</title>
 	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
-	    <script type="text/javascript" src="anime.min.js"></script>
+		<script type="text/javascript" src="anime.min.js"></script>
 	    <script type="text/javascript" src="script.js"></script>
 	    <script type="text/javascript" src="effect.js"></script>
 	    <script type="text/javascript" src="randomBurst.js"></script>
-	    <script type="text/javascript" src="butterfly1.js"></script>
-	    <script type="text/javascript">
+	    <script type="text/javascript" src="butterfly.js"></script>
+	    <script type="text/javascript" src="oneByOne.js"></script>
+	    <!-- <script type="text/javascript">
 	    	window.onload = start;
-	    </script>
+	    </script> -->
 	    <link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
@@ -22,6 +23,7 @@
 				<div id="effectSelect">
 					<button onclick="night()">Night Mode</button>
 					<button onclick="createAnimation('butterfly')">Butterfly</button>
+					<button onclick="createAnimation('oneByOne')">OneByOne</button>
 					<button onclick="randomBurst()">RandomBurst</button>
 				</div>
 				<div id="effectControls">
@@ -33,6 +35,13 @@
 					<input type="number" name="paramA" placeholder="Length" min="0" value="50">
 					<input type="number" name="paramRotAngle" placeholder="Angle" value="0">
 					<input type="number" name="paramTau"  placeholder="Duration" min="100" value="3000">
+					<input type="submit" onclick="currentAnimation.updateParameters()"> 
+				</div>
+				<div class="effectParameters OneByOne">
+					<input type="number" name="paramColorR" placeholder="Color:R" min="0" max="255" value="255">
+					<input type="number" name="paramColorG" placeholder="Color:G" min="0" max="255" value="0">
+					<input type="number" name="paramColorB" placeholder="Color:B" min="0" max="255" value="0">
+					<input type="number" name="paramTau"  placeholder="Duration" min="100" value="500">
 					<input type="submit" onclick="currentAnimation.updateParameters()"> 
 				</div>
 			</div>

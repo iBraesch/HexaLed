@@ -19,6 +19,7 @@ Butterfly.prototype.start = function() {
             easing: 'easeInOutQuad',
             direction: 'alternate',
             loop: true,
+            update: sendData
         });
     } else if (this.colorAnime.paused) {
         this.colorAnime.play();
@@ -55,6 +56,7 @@ Butterfly.prototype.updateParameters = function() {
             easing: 'easeInOutQuad',
             direction: 'alternate',
             loop: true,
+            update: sendData
         });
     }
 }
@@ -75,4 +77,15 @@ function scale(arr, a, b) {
 		newArr.push(Math.floor((((arr[i] - m) * (b - a)) / (M - m)) + a));
 	}
 	return newArr;
+}
+
+function sendData() {
+    var dataArray = new Uint8Array(12*19*3);
+    $.each( leds, ( key, value ) => {
+        var colorArr = value.attr('fill').split(")")[0].split("(")[1].split(",").slice(0,3);
+        dataArray[key*3] = colorArr[0];
+        dataArray[key*3+1] = colorArr[1];
+        dataArray[key*3+2] = colorArr[2];
+    });
+    connection.send(dataArray);
 }
